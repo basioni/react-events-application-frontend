@@ -25,14 +25,14 @@ const Dashboard = () => {
         { label: 'Dashboard' }
     ];
     
-    const home = { icon: 'pi pi-home', url: 'http://localhost:3000' }
+    const homeLink = { icon: 'pi pi-home', url: 'http://localhost:3000' }
  
    
 
     return (
         <div className="container">
             <div className="col">
-            <BreadCrumb model={items} home={home}/>
+            <BreadCrumb model={items} home={homeLink}/>
             </div>
             <div className="col">
                 <div className="grid">
