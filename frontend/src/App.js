@@ -6,7 +6,6 @@ import "primereact/resources/primereact.min.css";                  //core css
 import "primeicons/primeicons.css";                                //icons
 import "primeflex/primeflex.css";
 
-import Login from "./components/users/Login";
 import Menu from './components/Menu';
 import Dashboard from './components/Dashboard';
 import TasksCalendar from "./components/calendar/TasksCalendar";
@@ -15,22 +14,14 @@ import AddUser from "./components/users/AddUser";
 import NoPage from "./components/NoPage";
 
 import './App.css';
-import { AuthProvider } from "./components/context/AuthContext";
 
 const App = () => { 
     return (
-      <AuthProvider>
         <BrowserRouter>
           <Menu />
-
           <Routes>
             <Route path="/">
-              (!user? 
-              <Route index element={<Login />} />
-              :
               <Route index element={<Dashboard />} />
-              );
-              <Route path="login" element={<Login />} />
               <Route path="dashboard" element={<Dashboard />} />
               <Route path="calendar" element={<TasksCalendar />} />
               <Route path="users" element={<ListUsers />} />
@@ -39,7 +30,6 @@ const App = () => {
               </Route >
           </Routes>
         </BrowserRouter>
-      </AuthProvider>
     );
   }
 
