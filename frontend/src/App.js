@@ -11,6 +11,7 @@ import Dashboard from './components/Dashboard';
 import TasksCalendar from "./components/calendar/TasksCalendar";
 import ListUsers from './components/users/ListUsers';
 import AddUser from "./components/users/AddUser";
+import ListTasks from "./components/tasks/ListTasks";
 import NoPage from "./components/NoPage";
 
 import './App.css';
@@ -26,6 +27,7 @@ const App = () => {
               <Route path="calendar" element={<TasksCalendar />} />
               <Route path="users" element={<ListUsers />} />
               <Route path="adduser" element={<AddUser />} />
+              <Route path="tasks" element={<ListTasks />} />
               <Route path="*" element={<NoPage />} />
               </Route >
           </Routes>
