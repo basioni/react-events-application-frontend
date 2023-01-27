@@ -51,10 +51,12 @@ const Menu = () => {
          ]
       }
    ];
-
+   const accountMenuItems = 
+   <Avatar image="https://avatars.githubusercontent.com/u/12942253?v=4" size="large" shape="circle"/>;
+    
    return (
       <Menubar model={menuItems}
-         end={<div>end</div>}
+         end={accountMenuItems}
       />
    )
 };
