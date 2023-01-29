@@ -32,26 +32,18 @@ const EventsSchema = mongoose.Schema({
         type: String ,
         required: true
     },
-    username :{
-        type: String ,
+    startDate :{
+        type: Date ,
         required: true
     },
-    email :{
-        type: String ,
-        required: true
-    },
-    password :{
-        type: String ,
-        required: true
-    }
-    ,
-    role :{
+    endDate :{
         type: String ,
         required: true
     }
 });
 
 const Users = mongoose.model('Users', UsersSchema, 'Users');
-const mySchemas = {'Users': Users };
+const Events = mongoose.model('Events', EventsSchema, 'Events');
+const mySchemas = [{'Users': Users }, {'Events' : Events}];
 
 module.exports = mySchemas;

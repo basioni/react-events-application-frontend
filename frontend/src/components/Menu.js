@@ -1,10 +1,18 @@
-import React from "react";
+
+import React, { useRef } from "react";
 import { Menubar } from 'primereact/menubar';
 import { Navigate, useNavigate } from 'react-router-dom';
 
 import { Avatar } from 'primereact/avatar';
 import { AvatarGroup } from 'primereact/avatargroup';
 import { Badge } from 'primereact/badge'
+
+import { TieredMenu } from 'primereact/tieredmenu';
+import { Button } from 'primereact/button';
+
+import logo from '../logo.svg';
+
+
 const Menu = () => {
    const navigate = useNavigate();
    // Menu Items
@@ -51,12 +59,37 @@ const Menu = () => {
          ]
       }
    ];
-   const accountMenuItems = 
-   <Avatar image="https://avatars.githubusercontent.com/u/12942253?v=4" size="large" shape="circle"/>;
-    
+   const menu = useRef(null);
+   const accountMenuItems = [
+
+      {
+         label: 'Profile',
+         icon: 'pi pi-fw pi-user'
+      },
+      {
+         label: 'Settings',
+         icon: 'pi pi-fw pi-wrench'
+      },
+      {
+         separator: true
+      },
+      {
+         label: 'Logout',
+         icon: 'pi pi-fw pi-power-off'
+      }
+   ];
+   const accountMenu =
+      <div className="card flex justify-content-center">
+         <TieredMenu model={accountMenuItems} popup ref={menu} />
+         <Avatar image="https://avatars.githubusercontent.com/u/12942253?v=4" size="large" shape="circle" onClick={(e) => menu.current.toggle(e)} />
+      </div>
+      ;
+   //  <img src="https://avatars.githubusercontent.com/u/12942253?v=4" height="40" shape="circle"></img>
+
    return (
       <Menubar model={menuItems}
-         end={accountMenuItems}
+         start={<img alt="logo" src={logo} height="40" className="mr-2"></img>}
+         end={accountMenu}
       />
    )
 };
