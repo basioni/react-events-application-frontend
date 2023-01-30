@@ -61,7 +61,6 @@ const Menu = () => {
    ];
    const menu = useRef(null);
    const accountMenuItems = [
-
       {
          label: 'Profile',
          icon: 'pi pi-fw pi-user'
