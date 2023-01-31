@@ -48,6 +48,6 @@ const EventsSchema = mongoose.Schema({
 
 const Users = mongoose.model('Users', UsersSchema, 'Users');
 const Events = mongoose.model('Events', EventsSchema, 'Events');
-const mySchemas = [{'Users': Users }, {'Events' : Events}];
+const mySchemas = {'Users': Users , 'Events' : Events};
 
 module.exports = mySchemas;

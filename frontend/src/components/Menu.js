@@ -39,6 +39,7 @@ const Menu = () => {
             {
                label: 'Add New',
                icon: 'pi pi-fw pi-calendar-plus',
+               command: () => { navigate('/addtask'); }
             }
          ]
       },

@@ -12,6 +12,7 @@ import TasksCalendar from "./components/calendar/TasksCalendar";
 import ListUsers from './components/users/ListUsers';
 import AddUser from "./components/users/AddUser";
 import ListTasks from "./components/tasks/ListTasks";
+import AddTask from "./components/tasks/AddTask";
 import NoPage from "./components/NoPage";
 
 import './App.css';
@@ -28,6 +29,7 @@ const App = () => {
               <Route path="users" element={<ListUsers />} />
               <Route path="adduser" element={<AddUser />} />
               <Route path="tasks" element={<ListTasks />} />
+              <Route path="addtask" element={<AddTask />} />
               <Route path="*" element={<NoPage />} />
               </Route >
           </Routes>

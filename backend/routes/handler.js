@@ -31,11 +31,7 @@ router.post('/adduser', async (req, res) => {
         catch (err) {
             res.end('User is not added');
         }
-
     });
-
-
-
 });
 
 // Route To Get All Users
@@ -57,53 +53,42 @@ router.get('/viewUsers', (req, res) => {
     }
 });
 
-// Route To Get Todo
-// router.get('/getTodo',(req, res)=>{
-//     mongoose.connect("mongodb://localhost/BOOKRDB");
-//     const todosLists = Schemas.Todos;
-//     try{
-//             const TodoURLID = req.url.substring(req.url.lastIndexOf('todoID=')+ 7);
-//             todosLists.find({todoID : TodoURLID}, async (err, newTooResult) => {
-//             res.end(JSON.stringify(newTooResult));
-//         },{});
-//     }
-//     catch(err) {
-//         console.log(err);
-//         res.end('ToDo not Found');
-//     }
-// });
+// Route To Add New Task
+router.post('/addtask', async (req, res) => {
+
+    const task = {
+        title: req.body.title,
+        startDate: req.body.startDate,
+        endDate: req.body.endDate,
+        allDay: req.body.allDay
+    };
+    const newTask = new Schemas.Events(task);
+    try {
+        await newTask.save(async (err, addedTaskResult) => {
+            res.status(200).json({
+                message: "success",
+            })
+        });
+    }
+    catch (err) {
+        res.end('Task is not added');
+    }
+});
+
+// Route To Get All Tasks
+router.get('/viewTasks', (req, res) => {
 
 
-// Route To ToDo Update-View
-// router.post('/updateTodo', async (req,res)=>{
-//     mongoose.connect("mongodb://localhost/BOOKRDB");
-//     const todo = {todoID: req.body.todoID , todoTitle: req.body.todoTitle, todoDescription: req.body.todoDescription};
-//     const todosLists = Schemas.Todos;
+    const tasksLists = Schemas.Events;
+    try {
+        tasksLists.find({}, async (err, tasksResult) => {
+            console.log(tasksResult);
+            res.end(JSON.stringify(tasksResult));
+        }, {});
 
-//     try{
-//         todosLists.updateOne({todoID : req.body.todoID}, todo , async (err, todoResult) => {
-//             res.redirect('./Todos');
-//         });
-//     }
-//     catch(err){
-//         res.end('ToDo not updated!');
-//     }
-// });
-
-// Route To Delete Todo
-// router.post('/deleteTodo', async (req,res)=>{
-//     mongoose.connect("mongodb://localhost/BOOKRDB");
-//     const todoId = {todoID: req.body.deleteTodo };
-//     const newTodo = Schemas.Todos;
-//     try{
-//         await newTodo.deleteOne(todoId, async (err) => {
-//             res.redirect('./Todos');
-//         });
-//     }
-//     catch(err) {
-//         console.log(err);
-//     }
-// });
-
-
+    }
+    catch (err) {
+        res.end('no Users Found!');
+    }
+});
 module.exports = router;
