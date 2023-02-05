@@ -58,8 +58,8 @@ router.post('/addtask', async (req, res) => {
 
     const task = {
         title: req.body.title,
-        startDate: req.body.startDate,
-        endDate: req.body.endDate,
+        startDate: new Date(req.body.startDate),
+        endDate: new Date(req.body.endDate),
         allDay: req.body.allDay
     };
     const newTask = new Schemas.Events(task);

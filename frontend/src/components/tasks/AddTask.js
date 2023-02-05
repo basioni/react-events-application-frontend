@@ -28,7 +28,7 @@ const AddUser = () => {
             title: '',
             startDate: '',
             endDate: '',
-            allDay: false,
+            allDay: true,
         },
         validate: (data) => {
             let errors = {};
@@ -108,7 +108,7 @@ const AddUser = () => {
                         <div className="field">
                             <span className="p-float-label p-input-icon-right">
                                 <i className="pi pi-user" />
-                                <Calendar id="startDate" value={formik.values.startDate} onChange={formik.handleChange} className={classNames({ 'p-invalid': isFormFieldValid('startDate') })} dateFormat="mm-dd-yy" showTime showSeconds />
+                                <Calendar id="startDate" value={formik.values.startDate} onChange={formik.handleChange} className={classNames({ 'p-invalid': isFormFieldValid('startDate') })} dateFormat="mm-dd-yy"  />
                                 <label htmlFor="startDate" className={classNames({ 'p-error': isFormFieldValid('startDate') })}>startDate*</label>
                             </span>
                             {getFormErrorMessage('startDate')}
@@ -117,7 +117,7 @@ const AddUser = () => {
                             <span className="p-float-label p-input-icon-right">
                                 <i className="pi pi-envelope" />
 
-                                <Calendar id="endDate" value={formik.values.endDate} onChange={formik.handleChange} className={classNames({ 'p-invalid': isFormFieldValid('endDate') })} dateFormat="mm-dd-yy" showTime showSeconds />
+                                <Calendar id="endDate" value={formik.values.endDate} onChange={formik.handleChange} className={classNames({ 'p-invalid': isFormFieldValid('endDate') })} dateFormat="mm-dd-yy" />
                                 <label htmlFor="endDate" className={classNames({ 'p-error': isFormFieldValid('endDate') })}>endDate*</label>
                             </span>
                             {getFormErrorMessage('endDate')}

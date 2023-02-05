@@ -40,10 +40,20 @@ const TasksCalendar = () => {
         try {
             const data = await fetch("http://localhost:4000/viewTasks");
             const posts = await data.json();
-            setEvents(posts.data);
+            //setEvents(posts.data);
+            const eventslist= posts.data.map((event)=>{
+            return {
+              title: event.title,
+              startDate: new Date(event.startDate),
+              endDate: new Date(event.endDate),
+              allDay: event.allDay
+            }
+          });
+           setEvents(eventslist);
         } catch (error) {
             console.log(error)
         }
+        
     }
 
     // const events = [
