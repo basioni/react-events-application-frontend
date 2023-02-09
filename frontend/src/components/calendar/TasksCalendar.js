@@ -33,7 +33,7 @@ const TasksCalendar = () => {
     const localizer = momentLocalizer(moment) // or globalizeLocalizer
 
     useEffect(() => {
-        console.log(fetchEvents());
+        fetchEvents();
         // console.log(events);
     }, [])
 
