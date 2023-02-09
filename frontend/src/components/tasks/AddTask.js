@@ -45,10 +45,6 @@ const AddUser = () => {
                 errors.endDate = 'Email is required.';
             }
 
-            if (!data.allDay) {
-                errors.allDay = 'All day task?';
-            }
-
             return errors;
         },
         onSubmit: async (data) => {
@@ -129,9 +125,8 @@ const AddUser = () => {
                                     id="allDay"
                                     name="allDay"
                                     checked={formik.values.allDay}
-                                    className={classNames({ 'p-invalid': isFormFieldValid('allDay') })} 
                                     onChange={(e) => {formik.handleChange}}> </Checkbox>
-                                <label htmlFor="allDay" className={classNames({ 'p-error': isFormFieldValid('allDay') })}> All Day Event? *</label>
+                                <label htmlFor="allDay"> All Day Event? *</label>
                             </span>
                             {getFormErrorMessage('allDay')}
                         </div>

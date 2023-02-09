@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState , useEffect } from 'react';
 
 import "primereact/resources/themes/lara-light-indigo/theme.css";  //theme
 import "primereact/resources/primereact.min.css";                  //core css
@@ -11,8 +11,7 @@ import { Calendar, momentLocalizer } from 'react-big-calendar'
 import moment from 'moment'
 import "react-big-calendar/lib/css/react-big-calendar.css";
 
-// Inizialize BigCalendar Localizer
-const localizer = momentLocalizer(moment) // or globalizeLocalizer
+
 
 // Load CSS
 // import './.css';
@@ -25,35 +24,44 @@ const TasksCalendar = () => {
         { label: 'Dashboard', label: 'Calendar' }
     ];
 
-    const home = { icon: 'pi pi-home', url: 'http://localhost:3000' }
+    const home = { icon: 'pi pi-home', url: 'http://localhost:3000' };
 
-    const [events, setEvents] = useState('');
+    const [ events , setEvents] = useState([]);
+    // const [events , setEvents] = useState({});
 
-    useEffect(()=>{
-        fetchEvents();
-        console.log(events);
-    },[])    
-    
-    
-    const fetchEvents = async() => {
-        
+    // Inizialize BigCalendar Localizer
+    const localizer = momentLocalizer(moment) // or globalizeLocalizer
+
+    useEffect(() => {
+        console.log(fetchEvents());
+        // console.log(events);
+    }, [])
+
+
+    const fetchEvents = async () => {
+
         try {
             const data = await fetch("http://localhost:4000/viewTasks");
             const posts = await data.json();
             //setEvents(posts.data);
-            const eventslist= posts.data.map((event)=>{
+            // const unfilteredPosts = posts.data;
+            const eventslist = await posts.map((event) => {
+            //console.log(event);
             return {
-              title: event.title,
-              startDate: new Date(event.startDate),
-              endDate: new Date(event.endDate),
-              allDay: event.allDay
-            }
-          });
-           setEvents(eventslist);
+                    title: event.title,
+                    startDate: new Date(event.startDate),
+                    endDate: new Date(event.endDate),
+                    allDay: event.allDay
+                }
+            });
+            //   console.log(posts)
+            setEvents(eventslist);
+            console.log(eventslist)
+
         } catch (error) {
             console.log(error)
         }
-        
+
     }
 
     // const events = [
@@ -84,7 +92,7 @@ const TasksCalendar = () => {
                 <div className="col-12 md:col-12 lg:col-12">
                     <BreadCrumb model={items} home={home} />
                 </div>
-                
+
                 <div className="col-12 md:col-12 lg:col-12  h-30rem ">
                     <Calendar
                         localizer={localizer}

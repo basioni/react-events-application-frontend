@@ -37,7 +37,7 @@ const EventsSchema = mongoose.Schema({
         required: true
     },
     endDate :{
-        type: String ,
+        type: Date ,
         required: true
     },
     allDay :{
