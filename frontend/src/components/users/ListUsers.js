@@ -27,18 +27,10 @@ const ListUsers = () => {
         try {
             const data = await fetch("http://localhost:4000/viewUsers");
             const posts = await data.json();
-            setPosts(posts.data);
+            setPosts(posts);
         } catch (error) {
             console.log(error)
         }
-        
-
-        // const readPosts = posts.map(usersFilter);
-        
-        //setPosts(posts.concat([{"actions" : "Edit - Delete"}]));
-        // console.log(readPosts);
- 
-        
     }
    
     const [first, setFirst] = useState(1);
@@ -59,10 +51,10 @@ const ListUsers = () => {
             currentPageReportTemplate='Showing {first} to {last} of {totalRecords} users'
             rows={12} 
             >
-            <Column field="id" header="ID" sortable style={{ width: '5%' }}></Column>
-            <Column field="name" header="Name" sortable  style={{ width: '15%' }}></Column>
-            <Column field="email" header="Email" sortable  style={{ width: '15%' }}></Column>
-            <Column field="password" header="Password" sortable  style={{ width: '15%' }}></Column>
+            <Column field="_id" header="ID" sortable style={{ width: '5%' }}></Column>
+            <Column field="name" header="Name" sortable></Column>
+            <Column field="email" header="Email" sortable ></Column>
+            <Column field="role" header="Role" sortable ></Column>
             </DataTable>
             </div>
         </div>

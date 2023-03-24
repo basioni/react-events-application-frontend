@@ -25,7 +25,8 @@ router.post('/adduser', async (req, res) => {
             await newUser.save(async (err, newUserResult) => {
                 res.status(200).json({
                     message: "success",
-                })
+                });
+                console.log((newUserResult));
             });
         }
         catch (err) {
@@ -41,12 +42,8 @@ router.get('/viewUsers', (req, res) => {
     const usersLists = Schemas.Users;
     try {
         usersLists.find({}, async (err, usersResult) => {
-            // console.log(usersResult);
             res.end(JSON.stringify(usersResult));
         }, {});
-        //console.log(usersResult);
-        // res.end(JSON.stringify(usersLists));
-
     }
     catch (err) {
         res.end('no Users Found!');

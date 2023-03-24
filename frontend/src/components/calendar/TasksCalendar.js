@@ -26,7 +26,7 @@ const TasksCalendar = () => {
 
     const home = { icon: 'pi pi-home', url: 'http://localhost:3000' };
 
-    const [ events , setEvents] = useState([]);
+    const [events , setEvents] = useState([]);
     // const [events , setEvents] = useState({});
 
     // Inizialize BigCalendar Localizer
@@ -34,7 +34,7 @@ const TasksCalendar = () => {
 
     useEffect(() => {
         fetchEvents();
-        // console.log(events);
+        //  console.log(events);
     }, [])
 
 
@@ -45,18 +45,19 @@ const TasksCalendar = () => {
             const posts = await data.json();
             //setEvents(posts.data);
             // const unfilteredPosts = posts.data;
-            const eventslist = await posts.map((event) => {
-            //console.log(event);
-            return {
-                    title: event.title,
-                    startDate: new Date(event.startDate),
-                    endDate: new Date(event.endDate),
-                    allDay: event.allDay
-                }
-            });
-            //   console.log(posts)
-            setEvents(eventslist);
-            console.log(eventslist)
+            // const eventslist = await posts.map((event) => {
+            // //console.log(event);
+            // return {
+            //         title: event.title,
+            //         startDate: new Date(event.startDate),
+            //         endDate: new Date(event.endDate),
+            //         allDay: event.allDay
+            //     }
+            // });
+              
+            setEvents(posts);
+            console.log(events)
+            // console.log(events);
 
         } catch (error) {
             console.log(error)

@@ -88,7 +88,7 @@ const Menu = () => {
 
    return (
       <Menubar model={menuItems}
-         start={<img alt="logo" src={logo} height="40" className="mr-2"></img>}
+         start={<img alt="logo" src={logo} height="45" className="mr-2"></img>}
          end={accountMenu}
       />
    )
