@@ -55,8 +55,8 @@ const AddUser = () => {
                 // endDate: s2 ,
                 // allDay: false,
                 title: data.title,
-                startDate: data.startDate,
-                endDate: data.endDate,
+                startDate: new Date(data.startDate),
+                endDate: new Date(data.endDate),
                 allDay: data.allDay,
             })
                 .then(function (response) {

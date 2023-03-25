@@ -45,18 +45,23 @@ const TasksCalendar = () => {
             const posts = await data.json();
             //setEvents(posts.data);
             // const unfilteredPosts = posts.data;
-            // const eventslist = await posts.map((event) => {
-            // //console.log(event);
-            // return {
-            //         title: event.title,
-            //         startDate: new Date(event.startDate),
-            //         endDate: new Date(event.endDate),
-            //         allDay: event.allDay
-            //     }
-            // });
+            const eventslist = await posts.map((event) => {
+            
+            const unfilteredStartDate = new Date(event.startDate);
+            const unfilteredEndDate = new Date(event.endDate);
+            // console.log(unfilteredStartDate.getDay());
+            // console.log(unfilteredStartDate.getMonth());
+            // console.log(unfilteredStartDate.getFullYear());
+            return {
+                    title: event.title,
+                    start: new Date(unfilteredStartDate.getFullYear(), unfilteredStartDate.getMonth(), unfilteredStartDate.getDay()),
+                    end:   new Date(unfilteredEndDate.getFullYear(), unfilteredEndDate.getMonth(), unfilteredEndDate.getDay()),
+                    allDay: event.allDay
+                }
+            });
               
-            setEvents(posts);
-            console.log(events)
+            setEvents(eventslist);
+            console.log(eventslist)
             // console.log(events);
 
         } catch (error) {
@@ -64,27 +69,6 @@ const TasksCalendar = () => {
         }
 
     }
-
-    // const events = [
-    //     {
-    //         'title': 'All Day Event very long title',
-    //         'allDay': true,
-    //         'start': new Date(2023, 0, 0),
-    //         'end': new Date(2023, 0, 1)
-    //     },
-    //     {
-    //         'title': 'Long Event',
-    //         'start': new Date(2023, 0, 7),
-    //         'end': new Date(2023, 0, 10)
-    //     },
-
-    //     {
-    //         'title': 'DTS STARTS',
-    //         'start': new Date(2023, 0, 13, 0, 0, 0),
-    //         'end': new Date(2023, 0, 20, 0, 0, 0)
-    //     }
-    // ];
-
 
     return (
         <div className="container">
